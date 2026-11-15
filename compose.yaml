@@ -1,0 +1,17 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3847:3847"
+    environment:
+      APP_MODE: ${APP_MODE:-fixture}
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-gpt-4o-mini}
+      DB_PATH: /app/data/insights.sqlite
+      CACHE_TTL_SECONDS: ${CACHE_TTL_SECONDS:-900}
+    volumes:
+      - insights-data:/app/data
+
+volumes:
+  insights-data:

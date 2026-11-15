@@ -1,0 +1,295 @@
+{
+  "owner": "acme",
+  "repo": "widget",
+  "description": "Deterministic fixture for October 2026 analysis. Hand-verified counts documented in tests.",
+  "pullRequests": [
+    {
+      "id": "pr-1",
+      "number": 1,
+      "title": "Add checkout flow",
+      "author": { "id": "u-alice", "login": "alice", "isBot": false },
+      "createdAt": "2026-09-25T10:00:00.000Z",
+      "mergedAt": "2026-10-05T16:00:00.000Z",
+      "closedAt": "2026-10-05T16:00:00.000Z",
+      "state": "merged"
+    },
+    {
+      "id": "pr-2",
+      "number": 2,
+      "title": "Fix cart totals",
+      "author": { "id": "u-bob", "login": "bob", "isBot": false },
+      "createdAt": "2026-10-01T09:00:00.000Z",
+      "mergedAt": "2026-10-08T18:00:00.000Z",
+      "closedAt": "2026-10-08T18:00:00.000Z",
+      "state": "merged"
+    },
+    {
+      "id": "pr-3",
+      "number": 3,
+      "title": "Inventory sync",
+      "author": { "id": "u-alice", "login": "alice", "isBot": false },
+      "createdAt": "2026-10-05T12:00:00.000Z",
+      "mergedAt": "2026-10-20T12:00:00.000Z",
+      "closedAt": "2026-10-20T12:00:00.000Z",
+      "state": "merged"
+    },
+    {
+      "id": "pr-4",
+      "number": 4,
+      "title": "Docs polish",
+      "author": { "id": "u-carol", "login": "carol", "isBot": false },
+      "createdAt": "2026-10-10T08:00:00.000Z",
+      "mergedAt": "2026-10-12T08:00:00.000Z",
+      "closedAt": "2026-10-12T08:00:00.000Z",
+      "state": "merged"
+    },
+    {
+      "id": "pr-5",
+      "number": 5,
+      "title": "WIP payments",
+      "author": { "id": "u-dave", "login": "dave", "isBot": false },
+      "createdAt": "2026-10-15T10:00:00.000Z",
+      "mergedAt": null,
+      "closedAt": null,
+      "state": "open"
+    },
+    {
+      "id": "pr-6",
+      "number": 6,
+      "title": "September hotfix",
+      "author": { "id": "u-bob", "login": "bob", "isBot": false },
+      "createdAt": "2026-09-01T09:00:00.000Z",
+      "mergedAt": "2026-09-03T09:00:00.000Z",
+      "closedAt": "2026-09-03T09:00:00.000Z",
+      "state": "merged"
+    },
+    {
+      "id": "pr-7",
+      "number": 7,
+      "title": "deps: bump lodash",
+      "author": { "id": "u-dependabot", "login": "dependabot[bot]", "isBot": true },
+      "createdAt": "2026-10-02T00:00:00.000Z",
+      "mergedAt": "2026-10-02T01:00:00.000Z",
+      "closedAt": "2026-10-02T01:00:00.000Z",
+      "state": "merged"
+    },
+    {
+      "id": "pr-8",
+      "number": 8,
+      "title": "Search ranking",
+      "author": { "id": "u-dave", "login": "dave", "isBot": false },
+      "createdAt": "2026-10-20T10:00:00.000Z",
+      "mergedAt": "2026-10-28T10:00:00.000Z",
+      "closedAt": "2026-10-28T10:00:00.000Z",
+      "state": "merged"
+    },
+    {
+      "id": "pr-9",
+      "number": 9,
+      "title": "September feature A",
+      "author": { "id": "u-alice", "login": "alice", "isBot": false },
+      "createdAt": "2026-09-05T10:00:00.000Z",
+      "mergedAt": "2026-09-07T10:00:00.000Z",
+      "closedAt": "2026-09-07T10:00:00.000Z",
+      "state": "merged"
+    },
+    {
+      "id": "pr-10",
+      "number": 10,
+      "title": "September feature B",
+      "author": { "id": "u-carol", "login": "carol", "isBot": false },
+      "createdAt": "2026-09-08T10:00:00.000Z",
+      "mergedAt": "2026-09-10T10:00:00.000Z",
+      "closedAt": "2026-09-10T10:00:00.000Z",
+      "state": "merged"
+    },
+    {
+      "id": "pr-11",
+      "number": 11,
+      "title": "September feature C",
+      "author": { "id": "u-dave", "login": "dave", "isBot": false },
+      "createdAt": "2026-09-12T10:00:00.000Z",
+      "mergedAt": "2026-09-14T10:00:00.000Z",
+      "closedAt": "2026-09-14T10:00:00.000Z",
+      "state": "merged"
+    },
+    {
+      "id": "pr-12",
+      "number": 12,
+      "title": "September feature D",
+      "author": { "id": "u-bob", "login": "bob", "isBot": false },
+      "createdAt": "2026-09-15T10:00:00.000Z",
+      "mergedAt": "2026-09-18T10:00:00.000Z",
+      "closedAt": "2026-09-18T10:00:00.000Z",
+      "state": "merged"
+    },
+    {
+      "id": "pr-13",
+      "number": 13,
+      "title": "September feature E",
+      "author": { "id": "u-alice", "login": "alice", "isBot": false },
+      "createdAt": "2026-09-20T10:00:00.000Z",
+      "mergedAt": "2026-09-22T10:00:00.000Z",
+      "closedAt": "2026-09-22T10:00:00.000Z",
+      "state": "merged"
+    },
+    {
+      "id": "pr-14",
+      "number": 14,
+      "title": "September feature F",
+      "author": { "id": "u-carol", "login": "carol", "isBot": false },
+      "createdAt": "2026-09-24T10:00:00.000Z",
+      "mergedAt": "2026-09-26T10:00:00.000Z",
+      "closedAt": "2026-09-26T10:00:00.000Z",
+      "state": "merged"
+    },
+    {
+      "id": "pr-15",
+      "number": 15,
+      "title": "September feature G",
+      "author": { "id": "u-dave", "login": "dave", "isBot": false },
+      "createdAt": "2026-09-27T10:00:00.000Z",
+      "mergedAt": "2026-09-29T10:00:00.000Z",
+      "closedAt": "2026-09-29T10:00:00.000Z",
+      "state": "merged"
+    },
+    {
+      "id": "pr-16",
+      "number": 16,
+      "title": "Created in Oct merged later — still Oct merge",
+      "author": { "id": "u-bob", "login": "bob", "isBot": false },
+      "createdAt": "2026-09-28T10:00:00.000Z",
+      "mergedAt": "2026-10-03T10:00:00.000Z",
+      "closedAt": "2026-10-03T10:00:00.000Z",
+      "state": "merged"
+    }
+  ],
+  "reviews": [
+    {
+      "id": "rv-1a",
+      "pullRequestId": "pr-1",
+      "reviewer": { "id": "u-bob", "login": "bob", "isBot": false },
+      "submittedAt": "2026-10-02T10:00:00.000Z",
+      "state": "APPROVED"
+    },
+    {
+      "id": "rv-2a",
+      "pullRequestId": "pr-2",
+      "reviewer": { "id": "u-carol", "login": "carol", "isBot": false },
+      "submittedAt": "2026-10-03T09:00:00.000Z",
+      "state": "APPROVED"
+    },
+    {
+      "id": "rv-3a",
+      "pullRequestId": "pr-3",
+      "reviewer": { "id": "u-bob", "login": "bob", "isBot": false },
+      "submittedAt": "2026-10-15T12:00:00.000Z",
+      "state": "CHANGES_REQUESTED"
+    },
+    {
+      "id": "rv-3b",
+      "pullRequestId": "pr-3",
+      "reviewer": { "id": "u-carol", "login": "carol", "isBot": false },
+      "submittedAt": "2026-10-18T12:00:00.000Z",
+      "state": "APPROVED"
+    },
+    {
+      "id": "rv-4a",
+      "pullRequestId": "pr-4",
+      "reviewer": { "id": "u-alice", "login": "alice", "isBot": false },
+      "submittedAt": "2026-10-11T08:00:00.000Z",
+      "state": "APPROVED"
+    },
+    {
+      "id": "rv-5a",
+      "pullRequestId": "pr-5",
+      "reviewer": { "id": "u-alice", "login": "alice", "isBot": false },
+      "submittedAt": "2026-10-20T10:00:00.000Z",
+      "state": "COMMENTED"
+    },
+    {
+      "id": "rv-6a",
+      "pullRequestId": "pr-6",
+      "reviewer": { "id": "u-alice", "login": "alice", "isBot": false },
+      "submittedAt": "2026-09-02T09:00:00.000Z",
+      "state": "APPROVED"
+    },
+    {
+      "id": "rv-7a",
+      "pullRequestId": "pr-7",
+      "reviewer": { "id": "u-alice", "login": "alice", "isBot": false },
+      "submittedAt": "2026-10-02T00:30:00.000Z",
+      "state": "APPROVED"
+    },
+    {
+      "id": "rv-8a",
+      "pullRequestId": "pr-8",
+      "reviewer": { "id": "u-bob", "login": "bob", "isBot": false },
+      "submittedAt": "2026-10-26T10:00:00.000Z",
+      "state": "APPROVED"
+    },
+    {
+      "id": "rv-9a",
+      "pullRequestId": "pr-9",
+      "reviewer": { "id": "u-bob", "login": "bob", "isBot": false },
+      "submittedAt": "2026-09-06T10:00:00.000Z",
+      "state": "APPROVED"
+    },
+    {
+      "id": "rv-10a",
+      "pullRequestId": "pr-10",
+      "reviewer": { "id": "u-alice", "login": "alice", "isBot": false },
+      "submittedAt": "2026-09-09T10:00:00.000Z",
+      "state": "APPROVED"
+    },
+    {
+      "id": "rv-11a",
+      "pullRequestId": "pr-11",
+      "reviewer": { "id": "u-bob", "login": "bob", "isBot": false },
+      "submittedAt": "2026-09-13T10:00:00.000Z",
+      "state": "APPROVED"
+    },
+    {
+      "id": "rv-12a",
+      "pullRequestId": "pr-12",
+      "reviewer": { "id": "u-carol", "login": "carol", "isBot": false },
+      "submittedAt": "2026-09-16T10:00:00.000Z",
+      "state": "APPROVED"
+    },
+    {
+      "id": "rv-13a",
+      "pullRequestId": "pr-13",
+      "reviewer": { "id": "u-dave", "login": "dave", "isBot": false },
+      "submittedAt": "2026-09-21T10:00:00.000Z",
+      "state": "APPROVED"
+    },
+    {
+      "id": "rv-14a",
+      "pullRequestId": "pr-14",
+      "reviewer": { "id": "u-alice", "login": "alice", "isBot": false },
+      "submittedAt": "2026-09-25T10:00:00.000Z",
+      "state": "APPROVED"
+    },
+    {
+      "id": "rv-15a",
+      "pullRequestId": "pr-15",
+      "reviewer": { "id": "u-bob", "login": "bob", "isBot": false },
+      "submittedAt": "2026-09-28T10:00:00.000Z",
+      "state": "APPROVED"
+    },
+    {
+      "id": "rv-16a",
+      "pullRequestId": "pr-16",
+      "reviewer": { "id": "u-carol", "login": "carol", "isBot": false },
+      "submittedAt": "2026-09-30T10:00:00.000Z",
+      "state": "APPROVED"
+    },
+    {
+      "id": "rv-self",
+      "pullRequestId": "pr-2",
+      "reviewer": { "id": "u-bob", "login": "bob", "isBot": false },
+      "submittedAt": "2026-10-01T10:00:00.000Z",
+      "state": "COMMENTED"
+    }
+  ]
+}
