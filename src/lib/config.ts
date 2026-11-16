@@ -12,12 +12,29 @@ export function getGithubToken(): string | undefined {
   return process.env.GITHUB_TOKEN || undefined;
 }
 
-export function getOpenAIKey(): string | undefined {
-  return process.env.OPENAI_API_KEY || undefined;
+/** xAI / Grok API key. Also accepts GROK_API_KEY as an alias. */
+export function getXaiApiKey(): string | undefined {
+  return (
+    process.env.XAI_API_KEY ||
+    process.env.GROK_API_KEY ||
+    undefined
+  );
 }
 
-export function getOpenAIModel(): string {
-  return process.env.OPENAI_MODEL || "gpt-4o-mini";
+export function getXaiBaseUrl(): string {
+  return (
+    process.env.XAI_BASE_URL ||
+    process.env.GROK_BASE_URL ||
+    "https://api.x.ai/v1"
+  ).replace(/\/$/, "");
+}
+
+export function getGrokModel(): string {
+  return (
+    process.env.XAI_MODEL ||
+    process.env.GROK_MODEL ||
+    "grok-4.7"
+  );
 }
 
 export function getCacheTtlSeconds(): number {

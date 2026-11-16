@@ -11,7 +11,7 @@ flowchart TD
   Ingest --> Store
   Narrative --> Metrics
   Narrative --> Evidence[Evidence pack builder]
-  Evidence --> LLM[OpenAI structured output]
+  Evidence --> LLM[Grok xAI structured output]
   LLM --> Validate[Schema + evidence_id validator]
   Validate --> API
   Fixtures[Deterministic fixtures] --> Store

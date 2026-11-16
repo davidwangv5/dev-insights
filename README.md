@@ -35,7 +35,7 @@ curl -X POST "http://localhost:3847/api/insights/narrative" \
   -d '{"owner":"acme","repo":"widget","from":"2026-10-01","to":"2026-10-31"}'
 ```
 
-Fixture mode needs **no** `GITHUB_TOKEN` or `OPENAI_API_KEY`.
+Fixture mode needs **no** `GITHUB_TOKEN` or `XAI_API_KEY`.
 
 ## Metric definitions
 
@@ -55,7 +55,7 @@ Dashboard / curl
     → API routes
         → Ingestion (fixture seed or GitHub REST + SQLite cache)
         → Deterministic metrics engine → evidence pack
-        → Narrative service (fixture heuristic or OpenAI structured output)
+        → Narrative service (fixture heuristic or Grok/xAI structured output)
             → evidence_id validation
 ```
 
@@ -74,7 +74,8 @@ See [docs/architecture.md](docs/architecture.md).
 ## Modes
 
 - **`APP_MODE=fixture`** (default without `GITHUB_TOKEN`): seeds `fixtures/acme-widget.json`, deterministic narrative.
-- **`APP_MODE=live`**: GitHub pagination + ETag-aware refresh into SQLite; OpenAI narrative when `OPENAI_API_KEY` is set (otherwise fixture narrative fallback).
+- **`APP_MODE=live`**: GitHub pagination + ETag-aware refresh into SQLite.
+- **Live Grok narrative**: when `XAI_API_KEY` (or `GROK_API_KEY`) is set, narratives use xAI's OpenAI-compatible API (`https://api.x.ai/v1`, default model `grok-4.7`) with structured JSON schema. Without a key, the deterministic fixture narrative is used.
 
 ## Trade-offs
 

@@ -2,8 +2,9 @@ import OpenAI from "openai";
 import { zodResponseFormat } from "openai/helpers/zod";
 import { z } from "zod";
 import {
-  getOpenAIKey,
-  getOpenAIModel,
+  getGrokModel,
+  getXaiApiKey,
+  getXaiBaseUrl,
   MIN_SAMPLE_FOR_HYPOTHESIS,
 } from "./config";
 import type { EvidenceItem, InsightsResult, NarrativeResult } from "./domain";
@@ -174,17 +175,21 @@ function evidencePackForPrompt(insights: InsightsResult) {
 export async function generateNarrative(
   insights: InsightsResult,
 ): Promise<NarrativeResult> {
-  const apiKey = getOpenAIKey();
-  if (!apiKey || insights.mode === "fixture") {
+  const apiKey = getXaiApiKey();
+  // Without an xAI key, always use the deterministic fixture narrative.
+  if (!apiKey) {
     return buildFixtureNarrative(insights);
   }
 
-  const client = new OpenAI({ apiKey });
+  const client = new OpenAI({
+    apiKey,
+    baseURL: getXaiBaseUrl(),
+  });
   const pack = evidencePackForPrompt(insights);
   const heuristic = heuristicConfidence(insights);
 
   const completion = await client.chat.completions.parse({
-    model: getOpenAIModel(),
+    model: getGrokModel(),
     messages: [
       {
         role: "system",
@@ -201,13 +206,13 @@ export async function generateNarrative(
 
   const parsed = completion.choices[0]?.message?.parsed;
   if (!parsed) {
-    throw new Error("LLM returned no structured narrative");
+    throw new Error("Grok returned no structured narrative");
   }
 
   const check = validateEvidenceIds(parsed.evidence_ids, insights.evidence);
   if (!check.ok) {
     throw new Error(
-      `LLM cited unknown evidence ids: ${check.invalid.join(", ")}`,
+      `Grok cited unknown evidence ids: ${check.invalid.join(", ")}`,
     );
   }
 
