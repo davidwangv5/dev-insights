@@ -1,35 +1,51 @@
-# Interview notes
+# Submission notes
 
-## Why these metrics?
+## 1. How to run it locally
 
-Merged PR volume answers “did completed delivery change?” Time-to-first-review and time-to-merge help locate whether the change looks like review wait vs overall cycle time. Review participation adds a capacity signal. None of these equal individual performance.
+**Prerequisites:** Node.js 20+, npm. Docker optional.
 
-## Correctness story
+```bash
+cp .env.example .env
+npm install
+npm run dev
+```
 
-A PR created in September and merged in October counts in October because the metric measures **completed contribution**. The fixture includes `pr-1` and `pr-16` for this case, with hand-verified expected totals in `tests/metrics.test.ts`.
+Open [http://localhost:3847](http://localhost:3847) and analyze fixture repo `acme/widget` for `2026-10-01` → `2026-10-31`.
 
-## AI-correction story worth telling
+Or with Docker: `docker compose up --build`.
 
-Generated GitHub clients often fetch only the first page. This codebase implements Link-header pagination and has a regression test (`tests/github-pagination.test.ts`) that fails if page 2 is dropped. Similarly, ranking-by-`created_at` would silently mis-attribute window membership; golden tests lock `merged_at` semantics.
+| Env var | Required? | Purpose |
+|---|---|---|
+| `APP_MODE` | No (default `fixture` without token) | `fixture` or `live` |
+| `GITHUB_TOKEN` | Live mode only | Read-only GitHub access |
+| `XAI_API_KEY` | Optional | Live Grok narratives; without it, deterministic fixture narrative |
+| `DB_PATH` | No | SQLite path (default `./data/insights.sqlite`) |
+| `CACHE_TTL_SECONDS` | No | GitHub cache freshness (default `900`) |
 
-## Confidence semantics
+Fixture mode needs **no** API keys. Tests: `npm test`. More detail in [README.md](README.md).
 
-`confidence` is **not** calibrated probability and **not** a statement about metric accuracy. Counts are deterministic. Confidence is a documented heuristic for how strongly the *hypothesis* is supported by sample size and co-moving signals (e.g. volume drop + review-wait increase).
+## 2. Architecture tour
 
-## What I intentionally did not build
+Request path: Dashboard/curl → Next.js API routes → ingestion (fixture seed or GitHub REST into SQLite) → deterministic metrics engine → evidence pack → optional narrative (fixture heuristic or Grok/xAI) with `evidence_id` validation.
 
-- Background ingestion workers / webhooks
-- Multi-repo portfolio views
-- Auth / multi-tenant SaaS
-- GraphQL
-- Kubernetes
+Main decisions: keep metric math out of the LLM (counts are deterministic; the model only hypothesizes from a structured evidence pack); use SQLite + synchronous refresh for one-command local demos instead of workers/Postgres; validate owner/repo as identifier segments and cap date ranges; reject invented evidence IDs so narratives stay grounded. Provider clients only fetch/normalize — domain objects stay provider-neutral so another issue tracker could plug in later without rewriting aggregations.
 
-Prefer a small system done well over a loose platform.
+## 3. If I had another day
 
-## Live demo script (≈10 minutes)
+I would split GitHub ingestion into a queue-backed background worker (webhooks + scheduled refresh) and serve queries from stored events only, then swap SQLite for Postgres behind the same store boundary. Next I’d add a multi-repo portfolio view with shared date windows, and tighten live-mode UX around rate limits / partial refresh. GraphQL, auth, and multi-tenant SaaS stay out of scope until the single-repo path is boringly reliable.
 
-1. Fixture dashboard: `acme/widget`, Oct 2026 — show metrics + narrative evidence chips.
-2. Walk data flow: GitHub/fixture → SQLite events → metrics → evidence pack → narrative validator.
-3. Show a failing case: hallucinated evidence id rejected; tiny window → insufficient evidence.
-4. Trade-off: SQLite + sync refresh; path to workers + Postgres.
-5. AI disclosure: what was generated vs what was owned.
+## 4. AI disclosure
+
+AI coding assistance helped with scaffolding, repetitive test/boilerplate drafting, and refactor suggestions. Metric semantics, evidence schema, cache/freshness policy, LLM grounding rules, and fixture hand-counts were specified and verified manually. Generated code was reviewed; pagination and `created_at` vs `merged_at` window membership have regression tests rather than trusting generation.
+
+---
+
+## Appendix — demo / correctness talking points
+
+**Why these metrics?** Merged PR volume answers “did completed delivery change?” Time-to-first-review and time-to-merge locate review wait vs overall cycle time. Review participation adds a capacity signal. None equal individual performance.
+
+**Correctness:** A PR created in September and merged in October counts in October (`merged_at`). Fixture `pr-1` / `pr-16` lock this in `tests/metrics.test.ts`. Link-header pagination is covered by `tests/github-pagination.test.ts`.
+
+**Confidence:** Not calibrated probability and not a statement about count accuracy. It is a heuristic for how strongly the *hypothesis* is supported by sample size and co-moving signals.
+
+**Demo (~10 min):** fixture dashboard → data flow → hallucinated evidence id rejected / tiny-N insufficient evidence → SQLite trade-off → AI disclosure.

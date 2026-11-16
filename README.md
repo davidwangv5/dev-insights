@@ -6,6 +6,8 @@ It answers a practical question:
 
 > Did delivery slow down recently — and does the bottleneck look more like authoring, review wait, or merge?
 
+Submission checklist (run locally, architecture, next day, AI disclosure): see [NOTES.md](NOTES.md).
+
 ## 60-second quickstart
 
 ```bash
